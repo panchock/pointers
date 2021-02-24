@@ -10,12 +10,9 @@ template<typename T>
 SharedPtr<T>::~SharedPtr() {
 	try {
 		cout << "SharedPtr dtor" << endl;
-		// Check that m_refCount isn't nullptr (in case of move operators for example)
-		if (m_refCount != nullptr) {
-			m_refCount->decrease();
-			destroy();
-		}
+		destroy();
 	} catch (...) {
+		// IBL
 	}
 }
 
@@ -28,8 +25,13 @@ SharedPtr<T>::SharedPtr(const SharedPtr<T>& other) : m_ptr(other.m_ptr), m_refCo
 template<typename T>
 SharedPtr<T>& SharedPtr<T>::operator=(const SharedPtr<T>& other) {
 	cout << "copy assignment" << endl;
+	// Check if other is the same object instance.If yes, don't do anything
+	if (this == &other) {
+		cout << "self copy assignment" << endl;
+		return *this;
+	}
+
 	// delete phase. Before assign the new refCount of other we need to decrease current refCount 
-	m_refCount->decrease();
 	destroy();
 	m_ptr = other.m_ptr;
 	m_refCount = other.m_refCount;
@@ -55,7 +57,6 @@ SharedPtr<T>& SharedPtr<T>::operator=(SharedPtr&& other) {
 
 	cout << "move assignment" << endl;
 	// Delete phase
-	m_refCount->decrease();
 	destroy();
 	// Move and Reset phase
 	m_ptr = std::exchange(other.m_ptr, nullptr);
@@ -75,9 +76,15 @@ T* SharedPtr<T>::operator->() const {
 
 template<typename T>
 void SharedPtr<T>::destroy() {
-	if (m_ptr != nullptr && m_refCount->getCounter() == 0) {
-		cout << "delete SharedPtr m_ptr and m_refCount" << endl;
-		delete m_ptr;
-		delete m_refCount;
+	if (m_refCount != nullptr) {
+		m_refCount->decrease();
+		if (m_refCount->getCounter() == 0) {
+			cout << "delete SharedPtr m_refCount" << endl;
+			delete m_refCount;
+			if (m_ptr != nullptr) {
+				cout << "delete SharedPtr m_ptr" << endl;
+				delete m_ptr;
+			}
+		}
 	}
 }
