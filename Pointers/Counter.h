@@ -1,9 +1,9 @@
 #pragma once
 #include <cstdint>
+
 class Counter {
 public:
 	Counter(uint32_t startValue = 1);
-	~Counter();
 	void decrease();
 	void increase();
 	void printState();
