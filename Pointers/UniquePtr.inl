@@ -21,26 +21,23 @@ UniquePtr<T>::~UniquePtr() {
 }
 
 template<typename T>
-UniquePtr<T>::UniquePtr(UniquePtr<T>&& other) :
-	m_ptr(other.m_ptr)
-{
-	cout << "move ctor" << endl;
+UniquePtr<T>::UniquePtr(UniquePtr<T>&& other) : m_ptr(other.m_ptr) {
 	// Reset phase
 	other.m_ptr = nullptr;
+	cout << "move ctor" << endl;
 }
 
 template<typename T>
-UniquePtr<T>& UniquePtr<T>::operator=(UniquePtr&& other) noexcept {
+UniquePtr<T>& UniquePtr<T>::operator=(UniquePtr&& other) {
 	// Check if other is the same object instance. If yes, don't do anything
 	if (this == &other) {
 		cout << "self move assignment" << endl;
 		return *this;
 	}
-
-	cout << "move assignment" << endl;
 	// Delete phase
 	destroy();
 	m_ptr = std::exchange(other.m_ptr, nullptr);
+	cout << "move assignment" << endl;
 	return *this;
 }
 

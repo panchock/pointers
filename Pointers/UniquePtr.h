@@ -13,7 +13,7 @@ public:
 	UniquePtr<T>& operator=(const UniquePtr<T>& other) = delete;
 	// Allow move
 	UniquePtr(UniquePtr<T>&& other);
-	UniquePtr<T>& operator=(UniquePtr<T>&& other) noexcept;
+	UniquePtr<T>& operator=(UniquePtr<T>&& other);
 
 	T& operator*() const;
 	T* operator->() const;
