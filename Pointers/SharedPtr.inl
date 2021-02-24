@@ -15,23 +15,18 @@ SharedPtr<T>::~SharedPtr() {
 			m_refCount->decrease();
 			destroy();
 		}
-	}
-	catch (...) {
+	} catch (...) {
 	}
 }
 
 template<typename T>
-SharedPtr<T>::SharedPtr(const SharedPtr<T>& other) :
-	m_ptr(other.m_ptr),
-	m_refCount(other.m_refCount)
-{
+SharedPtr<T>::SharedPtr(const SharedPtr<T>& other) : m_ptr(other.m_ptr), m_refCount(other.m_refCount) {
 	cout << "copy ctor" << endl;
 	m_refCount->increase();
 }
 
 template<typename T>
-SharedPtr<T>& SharedPtr<T>::operator=(const SharedPtr<T>& other)
-{
+SharedPtr<T>& SharedPtr<T>::operator=(const SharedPtr<T>& other) {
 	cout << "copy assignment" << endl;
 	// delete phase. Before assign the new refCount of other we need to decrease current refCount 
 	m_refCount->decrease();
