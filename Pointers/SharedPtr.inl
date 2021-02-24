@@ -38,10 +38,7 @@ SharedPtr<T>& SharedPtr<T>::operator=(const SharedPtr<T>& other) {
 }
 
 template<typename T>
-SharedPtr<T>::SharedPtr(SharedPtr<T>&& other) :
-	m_ptr(other.m_ptr),
-	m_refCount(other.m_refCount)
-{
+SharedPtr<T>::SharedPtr(SharedPtr<T>&& other) : m_ptr(other.m_ptr),	m_refCount(other.m_refCount) {
 	cout << "move ctor" << endl;
 	// Reset phase
 	other.m_ptr = nullptr;
