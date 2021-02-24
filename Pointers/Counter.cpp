@@ -9,10 +9,6 @@ Counter::Counter(uint32_t startValue) : m_counter(startValue) {
 	printState(); 
 }
 
-Counter::~Counter() {
-	m_counter--;
-}
-
 void Counter::decrease() {
 	printState();
 	m_counter--;
