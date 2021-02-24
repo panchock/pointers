@@ -14,7 +14,7 @@ public:
 	UniquePtr<T>& operator=(const UniquePtr<T>& other) = delete;
 	// Allow move
 	UniquePtr(UniquePtr<T>&& other);
-	UniquePtr<T>& operator=(UniquePtr<T>&& other);
+	UniquePtr<T>& operator=(UniquePtr<T>&& other) noexcept;
 
 	T& operator*() const;
 	T* operator->() const;
@@ -52,7 +52,7 @@ UniquePtr<T>::UniquePtr(UniquePtr<T>&& other) {
 }
 
 template<typename T>
-UniquePtr<T>& UniquePtr<T>::operator=(UniquePtr&& other) {
+UniquePtr<T>& UniquePtr<T>::operator=(UniquePtr&& other) noexcept {
 	// Check if other is the same object instance. If yes, don't do anything
 	if (this == &other) {
 		cout << "self move assignment" << endl;
