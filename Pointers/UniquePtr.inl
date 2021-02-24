@@ -14,9 +14,8 @@ UniquePtr<T>::~UniquePtr() {
 	try {
 		cout << "UniquePtr dtor" << endl;
 		destroy();
-	}
-	catch (...) {
-
+	} catch (...) {
+		// ILB
 	}
 }
 
