@@ -19,7 +19,7 @@ public:
 	SharedPtr<T>& operator=(const SharedPtr<T>& other);
 	// Allow move
 	SharedPtr(SharedPtr<T>&& other);
-	SharedPtr<T>& operator=(SharedPtr<T>&& other) noexcept;
+	SharedPtr<T>& operator=(SharedPtr<T>&& other);
 
 	T& operator*() const;
 	T* operator->() const;

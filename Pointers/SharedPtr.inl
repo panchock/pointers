@@ -54,7 +54,7 @@ SharedPtr<T>::SharedPtr(SharedPtr<T>&& other) :
 }
 
 template<typename T>
-SharedPtr<T>& SharedPtr<T>::operator=(SharedPtr&& other) noexcept {
+SharedPtr<T>& SharedPtr<T>::operator=(SharedPtr&& other) {
 	// Check if other is the same object instance. If yes, don't do anything
 	if (this == &other) {
 		cout << "self move assignment" << endl;

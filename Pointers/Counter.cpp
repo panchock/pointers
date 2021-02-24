@@ -4,7 +4,7 @@
 using std::cout;
 using std::endl;
 
-Counter::Counter(uint32_t startValue = 1) : m_counter(startValue) {
+Counter::Counter(uint32_t startValue) : m_counter(startValue) {
 	cout << "Initialize refcount" << endl;
 	printState(); 
 }
