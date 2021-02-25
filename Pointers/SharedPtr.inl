@@ -81,9 +81,11 @@ void SharedPtr<T>::destroy() {
 		if (m_refCount->getCounter() == 0) {
 			cout << "delete SharedPtr m_refCount" << endl;
 			delete m_refCount;
+			m_refCount = nullptr;
 			if (m_ptr != nullptr) {
 				cout << "delete SharedPtr m_ptr" << endl;
 				delete m_ptr;
+				m_ptr = nullptr;
 			}
 		}
 	}
