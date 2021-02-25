@@ -1,20 +1,11 @@
 #include "Rectangle.h"
 #include "UniquePtr.h"
 #include "SharedPtr.h"
+#include "Utils.h"
 #include <iostream>
 
 using std::cout;
 using std::endl;
-
-template<typename T, class... Args>
-SharedPtr<T> make_shared(Args&&... args) {
-	return SharedPtr<T>(new T(std::forward<Args>(args)...));
-}
-
-template<typename T, class... Args>
-UniquePtr<T> make_unique(Args&&... args) {
-	return UniquePtr<T>(new T(std::forward<Args>(args)...));
-}
 
 void foo(SharedPtr<int> ptr) {
 	cout << *ptr << endl;

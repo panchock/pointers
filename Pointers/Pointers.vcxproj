@@ -130,6 +130,7 @@
     <ClInclude Include="Counter.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="SharedPtr.h" />
+    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SharedPtr.inl" />
