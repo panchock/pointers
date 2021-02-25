@@ -16,7 +16,7 @@ SharedPtr<T>::~SharedPtr() {
 
 template<typename T>
 SharedPtr<T>::SharedPtr(const SharedPtr<T>& other) : m_ptr(other.m_ptr), m_refCount(other.m_refCount) {
-	m_refCount->increase();
+	m_refCount++;
 }
 
 template<typename T>
@@ -30,7 +30,7 @@ SharedPtr<T>& SharedPtr<T>::operator=(const SharedPtr<T>& other) {
 	destroy();
 	m_ptr = other.m_ptr;
 	m_refCount = other.m_refCount;
-	m_refCount->increase();
+	m_refCount++;
 	return *this;
 }
 
@@ -69,7 +69,7 @@ T* SharedPtr<T>::operator->() const {
 template<typename T>
 void SharedPtr<T>::destroy() {
 	if (m_refCount != nullptr) {
-		m_refCount->decrease();
+		m_refCount--;
 		if (m_refCount->getCounter() == 0) {
 			delete m_refCount;
 			m_refCount = nullptr;

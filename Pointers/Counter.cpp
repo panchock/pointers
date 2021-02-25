@@ -7,11 +7,11 @@ using std::endl;
 Counter::Counter(uint32_t startValue) : m_counter(startValue) {
 }
 
-void Counter::decrease() {
+void Counter::operator--() {
 	m_counter--;
 }
 
-void Counter::increase() {
+void Counter::operator++() {
 	m_counter++;
 }
 
