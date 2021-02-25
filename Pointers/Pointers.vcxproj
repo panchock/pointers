@@ -123,11 +123,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Counter.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Counter.h" />
     <ClInclude Include="Rectangle.h" />
-    <ClInclude Include="UniquePtr.h" />
+    <ClInclude Include="SharedPtr.h" />
+    <ClInclude Include="Utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SharedPtr.inl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="UniquePtr.inl" />
