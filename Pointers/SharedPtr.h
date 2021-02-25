@@ -2,9 +2,6 @@
 #include <iostream>
 #include "Counter.h"
 
-using std::cout;
-using std::endl;
-
 /**
  * RAII pointer implementation.
  * SharedPtr holds a refcount (Counter object) and destroy the inner pointer if refcount equals 0
