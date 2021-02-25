@@ -5,20 +5,14 @@ using std::cout;
 using std::endl;
 
 Counter::Counter(uint32_t startValue) : m_counter(startValue) {
-	cout << "Initialize refcount" << endl;
-	printState(); 
 }
 
 void Counter::decrease() {
-	printState();
 	m_counter--;
-	printState();
 }
 
 void Counter::increase() {
-	printState();
 	m_counter++;
-	printState();
 }
 
 void Counter::printState() {
