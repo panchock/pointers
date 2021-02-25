@@ -2,7 +2,7 @@
 #include "SharedPtr.h"
 
 template<typename T>
-SharedPtr<T>::SharedPtr(T* ptr) : m_ptr(ptr), m_refCount(new Counter) {
+SharedPtr<T>::SharedPtr(T*&& ptr) : m_ptr(ptr), m_refCount(new Counter) {
 }
 
 template<typename T>
