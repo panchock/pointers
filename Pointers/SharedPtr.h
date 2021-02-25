@@ -12,7 +12,7 @@ using std::endl;
 template<typename T>
 class SharedPtr {
 public:
-	explicit SharedPtr(T*&& ptr);
+	explicit SharedPtr(T* ptr);
 	~SharedPtr();
 	// Allow copy
 	SharedPtr(const SharedPtr<T>& other);
